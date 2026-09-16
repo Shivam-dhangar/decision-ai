@@ -1,35 +1,32 @@
 import React from 'react';
+import Image from 'next/image';
 import { Card } from '@/components/ui/Card';
 
 interface TeamMember {
   name: string;
   role: string;
   bio: string;
-  initials: string;
-  avatarBg: string;
+  photo: string;
 }
 
 const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Zahir Khan',
+    name: 'Zaid Baig',
     role: 'Founder & CEO',
     bio: 'Product strategist and decision-intelligence advocate. Focused on bridging human cognitive reasoning with deterministic computational frameworks.',
-    initials: 'ZK',
-    avatarBg: 'from-brand-600 to-indigo-700',
+    photo: '/team/zaid-baig.jpg',
   },
   {
-    name: 'Manny Bhardwaj',
+    name: 'Yash Sharma',
     role: 'Co-Founder & CTO',
     bio: 'Systems architect specializing in verifiable AI systems, client-side cryptographic privacy, and deterministic multi-criteria decision engines.',
-    initials: 'MB',
-    avatarBg: 'from-indigo-600 to-purple-700',
+    photo: '/team/yash-sharma.jpg',
   },
   {
-    name: 'Prathmesh Jain',
+    name: 'Farid Nirban',
     role: 'Head of Operations',
     bio: 'Operations and growth strategist orchestrating product usability pipelines, enterprise pilot frameworks, and structured evaluation benchmarks.',
-    initials: 'PJ',
-    avatarBg: 'from-slate-700 to-slate-900',
+    photo: '/team/farid-nirban.jpg',
   },
 ];
 
@@ -54,10 +51,14 @@ export function TeamSection() {
             <Card key={member.name} hoverEffect className="p-6 sm:p-8 flex flex-col justify-between rounded-3xl shadow-xs">
               <div>
                 <div className="flex items-center gap-4 mb-5">
-                  <div
-                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${member.avatarBg} flex items-center justify-center text-white font-bold text-lg shadow-sm shrink-0`}
-                  >
-                    {member.initials}
+                  <div className="relative w-14 h-14 rounded-2xl overflow-hidden shadow-sm shrink-0">
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      fill
+                      sizes="56px"
+                      className="object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 leading-snug">
